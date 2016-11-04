@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-from checkin.models import Child
+from checkin.models import Child, Day
 
 from django.views.generic.edit import CreateView
 
@@ -37,7 +37,8 @@ class ChildCreateView(CreateView):
     success_url = "/"
     fields = ('profile', 'first', 'last', 'pin')
 
+
 class DayCreateView(CreateView):
-    model = Child
+    model = Day
     success_url = "/"
-    fields = ('checkin', 'checkout', 'hours')
+    fields = ('checkout', 'hours')
