@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 <h1>Redeem Code</h1>
+
+<p>
+  Get child by pin
+</p>
+
+      <form class="" action="" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-4">
+<input type="text" name="pin" value=""></div>
+        <div class="col-md-2">
+        </div>
+          <button class="btn btn-default" type="submit">Submit</button>
+        </div>
+      </form>
+
 {% endblock %}

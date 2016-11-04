@@ -8,6 +8,10 @@ from checkin.models import Child
 
 from django.views.generic.edit import CreateView
 
+from django.http import HttpResponseRedirect
+
+from django.urls import reverse
+
 # Create your views here.
 
 
@@ -19,6 +23,13 @@ class UserCreateView(CreateView):
 
 class IndexView(TemplateView):
     template_name = 'index.html'
+
+    def post(self, request):
+        pin = request.POST["pin"]
+        child = Child.objects.get(pin=pin)
+        print(child)
+        # return HttpResponseRedirect(reverse("child_update_view", args=[child.id]))
+        # return HttpResponseRedirect(reverse("child_update_view", args=[child.id]))
 
 
 class ChildCreateView(CreateView):
