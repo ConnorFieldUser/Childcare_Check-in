@@ -23,6 +23,9 @@ class Child(models.Model):
     pin = models.IntegerField(unique=True)
     profile = models.ForeignKey(User)
 
+    def __str__(self):
+        return "{}, {}".format(self.last, self.first)
+
 
 ACCESS_LEVELS = [
     ('S', 'Staff'),
@@ -32,6 +35,8 @@ ACCESS_LEVELS = [
 
 class Profile(models.Model):
     user = models.OneToOneField('auth.User')
+    first_name = models.CharField(max_length=15)
+    last_name = models.CharField(max_length=15)
     access_level = models.CharField(max_length=1, choices=ACCESS_LEVELS)
 
     def __str__(self):
