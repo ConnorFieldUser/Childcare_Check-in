@@ -10,7 +10,7 @@ from django.views.generic.edit import CreateView
 
 
 class UserCreateView(CreateView):
-    models = User
+    model = User
     form_class = UserCreationForm
     success_url = "/"
 
