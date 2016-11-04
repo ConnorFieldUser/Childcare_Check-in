@@ -21,7 +21,7 @@ class Child(models.Model):
     first = models.CharField(max_length=10)
     last = models.CharField(max_length=10)
     pin = models.IntegerField(unique=True)
-    parent = models.ForeignKey(User)
+    profile = models.ForeignKey(User)
 
 
 ACCESS_LEVELS = [
