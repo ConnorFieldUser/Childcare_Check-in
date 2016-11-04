@@ -25,8 +25,8 @@ class Child(models.Model):
 
 
 ACCESS_LEVELS = [
-    ('s', 'Staff'),
-    ('p', 'Parent'),
+    ('S', 'Staff'),
+    ('P', 'Parent'),
 ]
 
 
@@ -35,15 +35,15 @@ class Profile(models.Model):
     access_level = models.CharField(max_length=1, choices=ACCESS_LEVELS)
 
     def __str__(self):
-        return self.access_level
+        return str(self.user)
 
     @property
     def owner(self):
-        return self.access_level == 's'
+        return self.access_level == 'S'
 
     @property
     def parent(self):
-        return self.access_level == 'p'
+        return self.access_level == 'P'
 
 
 @receiver(post_save, sender="auth.User")
@@ -51,4 +51,4 @@ def create_user_profile(**kwargs):
     created = kwargs.get('created')
     instance = kwargs.get('instance')
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.create(user=instance, access_level='P')
