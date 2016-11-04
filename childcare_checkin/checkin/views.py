@@ -28,7 +28,7 @@ class IndexView(TemplateView):
         pin = request.POST["pin"]
         child = Child.objects.get(pin=pin)
         print(child)
-        # return HttpResponseRedirect(reverse("child_update_view", args=[child.id]))
+        return HttpResponseRedirect(reverse("day_create_view"))
         # return HttpResponseRedirect(reverse("child_update_view", args=[child.id]))
 
 
@@ -37,5 +37,7 @@ class ChildCreateView(CreateView):
     success_url = "/"
     fields = ('profile', 'first', 'last', 'pin')
 
-    def form_valid(self, form):
-        return super().form_valid(form)
+class DayCreateView(CreateView):
+    model = Child
+    success_url = "/"
+    fields = ('checkin', 'checkout', 'hours')

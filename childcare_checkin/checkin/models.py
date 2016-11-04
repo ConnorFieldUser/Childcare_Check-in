@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Check(models.Model):
+class Day(models.Model):
 
     checkin = models.DateTimeField(auto_now=True)
     checkout = models.DateTimeField(auto_now=True)
