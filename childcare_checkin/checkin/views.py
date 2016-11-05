@@ -1,5 +1,5 @@
 # from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -30,6 +30,7 @@ class IndexView(TemplateView):
         print(child)
         return HttpResponseRedirect(reverse("day_create_view"))
         # return HttpResponseRedirect(reverse("child_update_view", args=[child.id]))
+        # return HttpResponseRedirect(reverse("child_detail_view", args=[child.id]))
 
 
 class ChildCreateView(CreateView):
@@ -41,4 +42,8 @@ class ChildCreateView(CreateView):
 class DayCreateView(CreateView):
     model = Day
     success_url = "/"
-    fields = ('checkout', 'hours')
+    fields = ('hours',)
+
+
+class ChildDetailView(DetailView):
+    model = Child

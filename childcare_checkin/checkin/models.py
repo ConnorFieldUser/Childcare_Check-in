@@ -9,13 +9,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Day(models.Model):
-
-    checkin = models.DateTimeField(auto_now_add=True)
-    checkout = models.DateTimeField(auto_now=True, null=True, blank=True)
-    hours = models.IntegerField(null=True, blank=True)
-
-
 class Child(models.Model):
 
     first = models.CharField(max_length=10)
@@ -31,6 +24,17 @@ ACCESS_LEVELS = [
     ('S', 'Staff'),
     ('P', 'Parent'),
 ]
+
+
+class Day(models.Model):
+
+    checkin = models.DateTimeField(auto_now_add=True)
+    checkout = models.DateTimeField(auto_now=True, null=True, blank=True)
+    hours = models.IntegerField(null=True, blank=True)
+    child = models.ForeignKey(Child)
+
+    def __str__(self):
+        return "{}/{}".format(self.checkin, self.checkout)
 
 
 class Profile(models.Model):
