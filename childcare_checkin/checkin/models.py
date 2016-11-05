@@ -15,6 +15,7 @@ class Child(models.Model):
     last = models.CharField(max_length=10)
     pin = models.IntegerField(unique=True)
     profile = models.ForeignKey(User)
+    on_site = models.BooleanField(default=True)
 
     def __str__(self):
         return "{}, {}".format(self.last, self.first)

@@ -44,6 +44,11 @@ class DayCreateView(CreateView):
     success_url = "/"
     fields = ('hours',)
 
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.child = Child.objects.get(id=self.kwargs['pk'])
+        return super().form_valid(form)
+
 
 class ChildDetailView(DetailView):
     model = Child
