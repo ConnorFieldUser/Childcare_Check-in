@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from checkin.views import UserCreateView, IndexView, ChildCreateView, DayCreateView, ChildDetailView
+from checkin.views import UserCreateView, IndexView, ChildCreateView, DayCreateView, ChildDetailView, DayUpdateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name="index_view"),
     url(r'^create_child$', ChildCreateView.as_view(), name="child_create_view"),
     url(r'^child/(?P<pk>\d+)/$', ChildDetailView.as_view(), name="child_detail_view"),
-    url(r'^child/(?P<pk>\d+)/create_day$', DayCreateView.as_view(), name="day_create_view")
+    url(r'^child/(?P<pk>\d+)/create$', DayCreateView.as_view(), name="day_create_view"),
+    url(r'^child/(?P<pk>\d+)/update$', DayUpdateView.as_view(), name="child_update_view")
 ]

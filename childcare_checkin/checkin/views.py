@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from checkin.models import Child, Day
 
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from django.http import HttpResponseRedirect
 
@@ -43,7 +43,7 @@ class ChildCreateView(CreateView):
 class DayCreateView(CreateView):
     model = Day
     success_url = "/"
-    fields = ('comments',)
+    fields = ('comment',)
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -53,3 +53,9 @@ class DayCreateView(CreateView):
 
 class ChildDetailView(DetailView):
     model = Child
+
+
+class DayUpdateView(UpdateView):
+    model = Day
+    success_url = "/"
+    fields = ('comment',)
