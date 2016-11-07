@@ -13,7 +13,13 @@
   <body>
 <div class="container">
 
-  <a href="{% url 'login' %}">Login</a></h1>
+  /<a href="{% url 'login' %}">Login</a></h1> /
+  <a href="{% url 'child_create_view' %}">Add Child</a></h1>/
+
+  {% if not request.user.profile.access_level.is_owner %}
+  <a href="{% url 'user_create_view' %}">Add Parent</a></h1>
+{% endif %}
+
   {% block content %}
   {% endblock %}
 </div>
