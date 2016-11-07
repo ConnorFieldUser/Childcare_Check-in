@@ -43,7 +43,7 @@ class ChildCreateView(CreateView):
 class DayCreateView(CreateView):
     model = Day
     success_url = "/"
-    fields = ('hours',)
+    fields = ('comments',)
 
     def form_valid(self, form):
         instance = form.save(commit=False)

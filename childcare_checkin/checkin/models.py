@@ -30,6 +30,7 @@ class Day(models.Model):
 
     checkin = models.DateTimeField(auto_now_add=True)
     checkout = models.DateTimeField(auto_now=True, null=True, blank=True)
+    comment = models.TextField(null=True, blank=True)
     hours = models.IntegerField(null=True, blank=True)
     child = models.ForeignKey(Child)
 
