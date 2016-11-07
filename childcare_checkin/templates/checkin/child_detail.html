@@ -4,8 +4,8 @@
 <h1>child <a href="{% url 'day_create_view' object.id %}">Are you dropping off {{ child.first }}?</a></h1>
 
 {% for day in object.day_set.all %}
-{%  %}
-<h1>child <a href="{% url 'update' object.id %}">Are you picking up {{ child.first }}?</a></h1>
+{% if day.active %}
+<h1>child <a href="{% url 'day_update_view' object.id %}">Are you picking up {{ child.first }}?</a></h1>
 {% endif %}
 {% endfor %}
 

@@ -32,6 +32,7 @@ class Day(models.Model):
     checkout = models.DateTimeField(auto_now=True, null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
     hours = models.IntegerField(null=True, blank=True)
+    active = models.BooleanField(default=True)
     child = models.ForeignKey(Child)
 
     def __str__(self):
