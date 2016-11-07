@@ -58,4 +58,4 @@ class ChildDetailView(DetailView):
 class DayUpdateView(UpdateView):
     model = Day
     success_url = "/"
-    fields = ('comment',)
+    fields = ('comment', 'active')
