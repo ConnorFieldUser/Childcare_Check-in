@@ -3,7 +3,7 @@
 {% block content %}
 please work
 
-<h1>child <a href="">Are you picking up {{ child.first }}?</a></h1>
+<h1>child <a href="{% url 'day_create_view' object.id %}">Are you picking up {{ child.first }}?</a></h1>
 
 <form class="" action="" method="post">
   {% csrf_token %}
