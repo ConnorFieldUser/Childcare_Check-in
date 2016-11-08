@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^create_child$', ChildCreateView.as_view(), name="child_create_view"),
     url(r'^child/(?P<pk>\d+)/$', ChildDetailView.as_view(), name="child_detail_view"),
     url(r'^child/(?P<pk>\d+)/create$', DayCreateView.as_view(), name="day_create_view"),
-    url(r'^child/(?P<pk>\d+)/update$', DayUpdateView.as_view(), name="day_update_view")
+    url(r'^day/(?P<pk>\d+)/update$', DayUpdateView.as_view(), name="day_update_view")
 ]

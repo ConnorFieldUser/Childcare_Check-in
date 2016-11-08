@@ -16,6 +16,10 @@ class Child(models.Model):
     pin = models.IntegerField(unique=True)
     profile = models.ForeignKey(User)
 
+    @property
+    def active_day(self):
+        return self.day_set.get(active=True)
+
     def __str__(self):
         return "{}, {}".format(self.last, self.first)
 

@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>child <a href="{% url 'day_create_view' object.id %}">Are you dropping off {{ child.first }}?</a></h1>
 
-{% for day in object.day_set.all %}
-{% if day.active %}
-<h1>child <a href="{% url 'day_update_view' day.id %}">Are you picking up {{ child.first }}?</a></h1>
+
+{% if object.active_day %}
+<h1><a href="{% url 'day_update_view' object.active_day.id %}">Are you picking up {{ child.first }}?</a></h1>
+{% else %}
+<h1><a href="{% url 'day_create_view' object.id %}">Are you dropping off {{ child.first }}?</a></h1>
+{{ object.active_day }}
 {% endif %}
-{% endfor %}
 
 {% endblock %}
