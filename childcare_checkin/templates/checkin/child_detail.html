@@ -4,9 +4,11 @@
 
 
 {% if object.active_day %}
-<h1><a href="{% url 'day_update_view' object.active_day.id %}">Are you picking up {{ child.first }}?</a></h1>
+<h1 style="color: green;">On-site</h1>
+<h3><a href="{% url 'day_update_view' object.active_day.id %}">Are you picking up {{ child.first }}?</a></h3>
 {% else %}
-<h1><a href="{% url 'day_create_view' object.id %}">Are you dropping off {{ child.first }}?</a></h1>
+<h3><a href="{% url 'day_create_view' object.id %}">Are you dropping off {{ child.first }}?</a></h3>
+<h1 style="color: red;">Off-site</h1>
 {{ object.active_day }}
 {% endif %}
 
