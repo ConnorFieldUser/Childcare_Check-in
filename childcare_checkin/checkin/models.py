@@ -40,7 +40,7 @@ class Day(models.Model):
     child = models.ForeignKey(Child)
 
     def __str__(self):
-        return "{}/{}".format(self.checkin, self.checkout)
+        return "{}------{}".format(self.checkin, self.checkout)
 
 
 class Profile(models.Model):
