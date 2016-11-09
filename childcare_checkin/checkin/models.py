@@ -51,11 +51,11 @@ class Profile(models.Model):
         return str(self.user)
 
     @property
-    def owner(self):
+    def is_staff(self):
         return self.access_level == 'S'
 
     @property
-    def parent(self):
+    def is_parent(self):
         return self.access_level == 'P'
 
 

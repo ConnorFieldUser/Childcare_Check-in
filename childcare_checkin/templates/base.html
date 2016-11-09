@@ -13,16 +13,22 @@
   <body>
 <div class="container">
 
-  /<a href="{% url 'login' %}">Login</a></h1> /
-  <a href="{% url 'child_create_view' %}">Add Child</a></h1>/
+  <h3> {{ request.user }} </h3>
 
-  {% if not request.user.profile.access_level.is_owner %}
-  <a href="{% url 'user_create_view' %}">Add Parent</a></h1>
+
+  <a href="{% url 'index_view' %}">Main Page</a></h1> /
+  <a href="{% url 'login' %}">Login</a></h1> /
+  <a href="{% url 'user_create_view' %}">Create Account</a></h1> /
+
+
+  {% if request.user.profile.is_staff %}
+  <a style="color: blue" href="{% url 'child_create_view' %}">Add Child</a></h1>
 {% endif %}
 
   {% block content %}
   {% endblock %}
-</div>
 
+
+</div>
   </body>
 </html>

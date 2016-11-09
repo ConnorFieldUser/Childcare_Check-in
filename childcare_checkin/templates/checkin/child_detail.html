@@ -2,14 +2,16 @@
 {% block content %}
 
 
+{% if request.user.profile.is_staff %}
+<h1 style="color:red">Staff</h1>
+{% endif %}
 
 {% if object.active_day %}
 <h1 style="color: green;">On-site</h1>
 <h3><a href="{% url 'day_update_view' object.active_day.id %}">Are you picking up {{ child.first }}?</a></h3>
 {% else %}
 <h3><a href="{% url 'day_create_view' object.id %}">Are you dropping off {{ child.first }}?</a></h3>
-<h1 style="color: red;">Off-site</h1>
-{{ object.active_day }}
+<h4 style="color: red;">Off-site</h4>
 {% endif %}
 
 {% endblock %}

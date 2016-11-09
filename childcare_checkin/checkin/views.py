@@ -1,5 +1,5 @@
 # from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -49,6 +49,10 @@ class DayCreateView(CreateView):
         instance = form.save(commit=False)
         instance.child = Child.objects.get(id=self.kwargs['pk'])
         return super().form_valid(form)
+
+
+class DayListView(ListView):
+    model = Day
 
 
 class ChildDetailView(DetailView):
