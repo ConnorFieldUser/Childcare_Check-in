@@ -51,8 +51,8 @@ class DayCreateView(CreateView):
         return super().form_valid(form)
 
 
-class DayListView(ListView):
-    model = Day
+class ChildListView(ListView):
+    model = Child
 
 
 class ChildDetailView(DetailView):

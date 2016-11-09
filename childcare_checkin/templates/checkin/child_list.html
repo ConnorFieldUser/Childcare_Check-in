@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br>
+<h3>All Children</h3>
+<hr>
+{% for child in object_list %}
+<p>
+  <a href="{% url 'child_detail_view' child.id %}">
+{{ child }}
+<hr>
+</a>
+</p>
+{% endfor %}
+
+{% endblock %}

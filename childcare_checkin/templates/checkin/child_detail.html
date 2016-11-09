@@ -14,4 +14,13 @@
 <h4 style="color: red;">Off-site</h4>
 {% endif %}
 
+
+
+{% if request.user.profile.is_staff %}
+{% for day in object.day_set.all %}
+<p>({{ day }})</p>
+<br>
+{% endfor %}
+{% endif %}
+
 {% endblock %}
