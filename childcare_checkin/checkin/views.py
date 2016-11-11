@@ -26,9 +26,13 @@ class IndexView(TemplateView):
 
     def post(self, request):
         pin = request.POST["pin"]
-        child = Child.objects.get(pin=pin)
-        print(child)
-        return HttpResponseRedirect(reverse("child_detail_view", args=[child.id]))
+
+        try:
+            child = Child.objects.get(pin=pin)
+            print(child)
+            return HttpResponseRedirect(reverse("child_detail_view", args=[child.id]))
+        except Child.DoesNotExist:
+            return HttpResponseRedirect(reverse("index_view"))
         # return HttpResponseRedirect(reverse("day_create_view"))
         # return HttpResponseRedirect(reverse("child_update_view", args=[child.id]))
         # return HttpResponseRedirect(reverse("child_detail_view", args=[child.id]))
