@@ -3,7 +3,7 @@
 {% block content %}
 
 
-{% if request.profile.is_staff %}
+{% if request.user.profile.is_staff %}
 <form class="" action="" method="post">
   {% csrf_token %}
   {{ form }}
@@ -11,6 +11,6 @@
 </form>
 </div>
 {% else %}
-<h1 style="color: red;">You are not permitted to view this page!</h1> 
+<h1 style="color: red;">You are not permitted to view this page!</h1>
 {% endif %}
 {% endblock %}
